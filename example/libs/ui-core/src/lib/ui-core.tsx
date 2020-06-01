@@ -7,7 +7,7 @@ export interface UiCoreProps {}
 
 function getTitle() {
     return fetch('/.netlify/functions/get-todo-list', {
-        body: JSON.stringify({ data: 'xz data' }),
+        body: JSON.stringify({ data: 'xz data xz' }),
         method: 'POST'
     }).then(response => {
         return response.json()
