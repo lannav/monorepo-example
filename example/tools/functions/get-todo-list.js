@@ -4,7 +4,7 @@ exports.handler = function(event, context, callback) {
     callback(null, {
         statusCode: 200,
         body: JSON.stringify([
-            { title: event.body.data },
+            { title: data.data },
             { title: 'title 1' },
             { title: 'title 2' },
         ])
