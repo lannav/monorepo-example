@@ -15,7 +15,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@example/ui-core": ["libs/ui-core/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

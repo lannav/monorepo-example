@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { CoreComponent } from '@example/ui-core';
 import './app.less';
 
 import { ReactComponent as Logo } from './logo.svg';
@@ -144,6 +144,7 @@ nx affected:e2e
         render={() => (
           <div>
             <Link to="/">Click here to go back to root page.</Link>
+            <CoreComponent />
           </div>
         )}
       />

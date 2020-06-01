@@ -25,6 +25,9 @@
     "yofi-e2e": {
       "tags": [],
       "implicitDependencies": ["yofi"]
+    },
+    "ui-core": {
+      "tags": []
     }
   }
 }
