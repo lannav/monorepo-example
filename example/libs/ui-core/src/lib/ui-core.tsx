@@ -8,7 +8,7 @@ export interface UiCoreProps {}
 export const CoreComponent = (props: UiCoreProps) => {
   return (
     <div>
-      <h1>Welcome to ui-core!</h1>
+      <h1>Welcome to ui-core! {process.env.NX_BASE_URL}</h1>
     </div>
   );
 };
