@@ -1,0 +1,174 @@
+{
+  "version": 1,
+  "projects": {
+    "yofi": {
+      "root": "apps/yofi",
+      "sourceRoot": "apps/yofi/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "options": {
+            "outputPath": "dist/apps/yofi",
+            "index": "apps/yofi/src/index.html",
+            "main": "apps/yofi/src/main.tsx",
+            "polyfills": "apps/yofi/src/polyfills.ts",
+            "tsConfig": "apps/yofi/tsconfig.app.json",
+            "assets": ["apps/yofi/src/favicon.ico", "apps/yofi/src/assets"],
+            "styles": ["apps/yofi/src/styles.less"],
+            "scripts": [],
+            "webpackConfig": "./webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "yofi:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "yofi:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/yofi/.eslintrc",
+            "tsConfig": [
+              "apps/yofi/tsconfig.app.json",
+              "apps/yofi/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/yofi/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/yofi/jest.config.js",
+            "tsConfig": "apps/yofi/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "yofi-e2e": {
+      "root": "apps/yofi-e2e",
+      "sourceRoot": "apps/yofi-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/yofi-e2e/cypress.json",
+            "tsConfig": "apps/yofi-e2e/tsconfig.e2e.json",
+            "devServerTarget": "yofi:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "yofi:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/yofi-e2e/.eslintrc",
+            "tsConfig": ["apps/yofi-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/yofi-e2e/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/react"
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/react": {
+      "application": {
+        "style": "less",
+        "linter": "eslint",
+        "babel": true
+      },
+      "library": {
+        "style": "less",
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      },
+      "component": {
+        "style": "less"
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/web": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nx-plugin": {
+      "plugin": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "yofi"
+}
